@@ -7,12 +7,6 @@
         <h1>List of All</h1>
         <ul>
             <?php
-            $basejson = file_get_contents('http://laptop-service/');
-            $baseobj = json_decode($basejson);
-              $basedatas = $baseobj->data;
-            foreach ($basedatas as $d) {
-                echo "<li>$d[0]\t$d[1]\t$d[2]\t$d[3]\t$d[4]</li>";
-            }
             $ajson = file_get_contents('http://laptop-service/listAll');
             $aobj = json_decode($ajson);
               $adatas = $aobj->data;
@@ -70,24 +64,26 @@
         <ul>
             <?php
             $csv = file_get_contents('http://laptop-service/listAll/csv');
-            echo nl2br($csv);
-            echo "Try to fix csv print...";
-            ?>
+            $rcsv = json_decode($csv);
+            $rcsv = nl2br($rcsv);
+            echo $rcsv;
         </ul>
         <h1>List of Open in csv</h1>
         <ul>
             <?php
             $csv = file_get_contents('http://laptop-service/listOpenOnly/csv');
-            echo nl2br($csv);
-            echo "Try to fix csv print...";
+            $ocsv = json_decode($csv);
+            $ocsv = nl2br($ocsv);
+            echo $ocsv;
             ?>
         </ul>
         <h1>List of Close in csv</h1>
         <ul>
             <?php
             $csv = file_get_contents('http://laptop-service/listCloseOnly/csv');
-            echo nl2br($csv);
-            echo "Try to fix csv print...";
+            $ccsv = json_decode($csv);
+            $ccsv = nl2br($ccsv);
+            echo $ccsv;
             ?>
         </ul>
     </body>

@@ -16,7 +16,7 @@ class listAll(Resource):
         items = [item for item in _items]
         count = 0;
         for item in items:
-            ret.append([item['miles'], item['km'], item['location'], item['open']])
+            ret.append([item['miles'], item['km'], item['location'], item['open'], item['close']])
             count += 1;
         return { 'data': ret }
 
@@ -59,7 +59,7 @@ class listAllcsv(Resource):
         items = [item for item in _items]
         count = 0;
         for item in items:
-            ret.append([item['miles'], item['km'], item['location'], item['open']])
+            ret.append([item['miles'], item['km'], item['location'], item['open'], item['close']])
             retstr = ','.join(map(str,ret))
             count += 1;
         return { 'data': retstr }
